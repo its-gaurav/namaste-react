@@ -1,27 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-/**
- * 
- * <div id="parent">
- *      <div id="child">
- *          <h1>This is h1 tag</h1>
- *          <h2>This is h2 tag</h2>
- *      </div>
- * </div>
- * 
- */
 
-const parent = React.createElement("div", {id: "parent"}, 
-    React.createElement("div", {id: "child"}, [
-        React.createElement("h1", {}, "This is Namaste React"),
-        React.createElement("h2", {}, "This is h2 tag"),
-        
-        React.createElement("h1", {}, "This is h1 tag"),
-        React.createElement("h2", {}, "This is h2 tag")
-    ]
-    )
+// Creating a React element ==> This is just an object ==> On rendering on DOM, it becomes an http element
+const heading = React.createElement("h1",
+     {
+        id: "heading"
+    }, 
+    "Namaste React !"
 );
 
+console.log(heading);
+// Creating JSX object
+// JSX ==> Babel transpiles it to React.createElement ==> React Element-JS object ==> HTMLElement(render)  
+const jsxHeading  = <h1 id="heading" className="heading"> 
+Namaste React Using JSX! </h1>
+console.log(jsxHeading)
+
+// React Functional Component
+const HeadingComponent = () => {
+    return <h1>Namaste React Functional Component</h1>
+}; 
+
+console.log(<HeadingComponent />)
+
+// Can also be written as
+const HeadingComponent2 = () => <h1>Namaste React Functional Component</h1>; 
+
+
+// Creating a root in DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(<HeadingComponent />);
+
